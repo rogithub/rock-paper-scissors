@@ -22,48 +22,20 @@ namespace Rock.Paper.Scissors
         public Move GetNextMove(IList<Round> rounds)
         {
             // first time return random
-            if (rounds.Count == 0) return (Move)_rnd.Next(0, 2);
+            if (rounds.Count < 2) return (Move)_rnd.Next(0, 2);
 
-            Dictionary<Move, int> moveWeight = new Dictionary<Move, int>()
+            // if last two user choices are repeated (and won or tie)
+            // increase chance to win by giving more points
+            // to beating move
+            var prev = rounds[rounds.Count - 2];
+            var r = rounds[rounds.Count - 1];
+
+            if ((r.UserMove == prev.UserMove) && !r.ComputerWins && !prev.ComputerWins)
             {
-                [Move.Rock] = 0,
-                [Move.Paper] = 0,
-                [Move.Scissors] = 0
-            };
-
-            var arr = rounds.ToArray();
-
-            // beat each round and sum
-            for (int i = 0; i < arr.Length; i++)
-            {
-                var r = arr[i];
-                var winningMove = r.ComputerWins ?
-                                     r.ComputerMove :                // computer wins so is ok
-                                     BeatMe(r.UserMove);             // beat either user or tie result
-
-                moveWeight[winningMove] += 1;
-
-                // if last two user choices are repeated (and won or tie)
-                // increase chance to win by giving more points
-                // to beating move
-                if (i > 0)
-                {
-                    var prev = arr[i - 1];
-
-                    if (r.UserMove == prev.UserMove && (r.UserWins || r.IsTie) && (prev.UserWins || prev.IsTie))
-                    {
-                        moveWeight[BeatMe(r.UserMove)] += 1;
-                    }
-                }
+                return BeatMe(r.UserMove);
             }
 
-
-            // all won same times return random
-            if (moveWeight[Move.Rock] == moveWeight[Move.Paper] && moveWeight[Move.Paper] == moveWeight[Move.Scissors])
-                return (Move)_rnd.Next(0, 2);
-
-            var keyOfMaxValue = moveWeight.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
-            return keyOfMaxValue;
+            return (Move)_rnd.Next(0, 2);
         }
     }
 }
