@@ -6,12 +6,12 @@ namespace ConsoleApp
 {
     class Program
     {
-        private static bool Validate(string strNumber, out int iMove)
+        private static bool Validate(char strNumber, out int iMove)
         {
             iMove = -1;
             if
             (
-                int.TryParse(strNumber, out iMove) == false ||
+                int.TryParse(strNumber.ToString(), out iMove) == false ||
                 iMove < 0 ||
                 iMove > 2
             )
@@ -31,30 +31,25 @@ namespace ConsoleApp
         }
         static void Main(string[] args)
         {
-            var game = new Game<Round>();
-            var strategy = new LessUsedMoveStrategy();
+            var strategy = new HigherWinRateStrategy();
+            var game = new Game(strategy);
 
-            string strMove = "";
-            while (strMove != "q")
+            char strMove = '0';
+            while (strMove != 'q')
             {
                 Console.Clear();
                 Console.WriteLine("Pick a number [0 Rock, 1 Paper, 2 Scissors, q Quit]:");
-                strMove = Console.ReadLine();
+                strMove = Console.ReadKey(true).KeyChar;
                 int iMove = 0;
 
                 if (Validate(strMove, out iMove) == false)
                 {
-                    if (strMove != "q") Console.WriteLine("Input not valid");
-                    Console.ReadKey();
+                    if (strMove != 'q') Console.WriteLine("Input not valid");
                     continue;
                 }
 
                 Move userMove = (Move)iMove;
-
-                Round r = new Round();
-                r.UserMove = userMove;
-                r.ComputerMove = strategy.GetNextMove(game.Rounds);
-                game.Add(r);
+                var r = game.AddUserMove(userMove);
                 PrintResult(r);
                 Console.ReadKey();
             }

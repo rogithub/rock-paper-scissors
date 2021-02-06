@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Rock.Paper.Scissors
 {
-    public interface IRoundGame<T>
+    public interface IRoundGame<TMove, TRound>
     {
-        void Add(T round);
-        IList<T> Rounds { get; }
+        TRound AddUserMove(TMove move);
+        IList<TRound> Rounds { get; }
     }
 }
