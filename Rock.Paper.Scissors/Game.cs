@@ -13,26 +13,14 @@ namespace Rock.Paper.Scissors
         {
             this.Strategy = strategy;
             this.Rounds = new List<Round>();
-            this.WonsCount = new Dictionary<Move, int>()
-            {
-                [Move.Rock] = 0,
-                [Move.Paper] = 0,
-                [Move.Scissors] = 0
-            };
         }
 
         public Round AddUserMove(Move move)
         {
             Round r = new Round();
             r.UserMove = move;
-            r.ComputerMove = Strategy.GetNextMove(this.Rounds, this.WonsCount);
-            if (!r.IsTie)
-            {
-                WonsCount[r.UserWins ? r.UserMove : r.ComputerMove] += 1;
-            }
-
+            r.ComputerMove = Strategy.GetNextMove(this.Rounds);
             this.Rounds.Add(r);
-
             return r;
         }
     }

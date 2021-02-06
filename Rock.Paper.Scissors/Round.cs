@@ -25,6 +25,14 @@ namespace Rock.Paper.Scissors
                 };
             }
         }
+
+        public bool ComputerWins
+        {
+            get
+            {
+                return !IsTie && !UserWins;
+            }
+        }
         public bool IsTie
         {
             get
