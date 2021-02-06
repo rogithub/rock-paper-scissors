@@ -7,5 +7,6 @@ namespace Rock.Paper.Scissors
     {
         TRound AddUserMove(TMove move);
         IList<TRound> Rounds { get; }
+        void Reset();
     }
 }

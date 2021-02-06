@@ -11,7 +11,7 @@ namespace Rock.Paper.Scissors
         public Game(IMovePickerStrategy<Move, Round> strategy)
         {
             this.Strategy = strategy;
-            this.Rounds = new List<Round>();
+            this.Reset();
         }
 
         public Round AddUserMove(Move move)
@@ -22,5 +22,11 @@ namespace Rock.Paper.Scissors
             this.Rounds.Add(r);
             return r;
         }
+
+        public void Reset()
+        {
+            this.Rounds = new List<Round>();
+        }
+
     }
 }

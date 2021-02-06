@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">rock-paper-scissors</h1>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <h2>Game</h2>
+        <form id="frmGame">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Choose</label>
+                <select class="form-control" id="ddUserPick">
+                    <option value="0">Rock</option>
+                    <option value="1">Paper</option>
+                    <option value="2">Scissors</option>
+                </select>
+            </div>
+            <button type="button" id="btnReset" class="btn btn-danger">Reset</button>
+            <button type="submit" class="btn btn-primary">Play Round</button>
+        </form>
+
+        
+        <table id="tblResults" class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>
+                        Round
+                    </th>
+                    <th>
+                        Who Won
+                    </th>
+                    <th>
+                        User Move
+                    </th>
+                    <th>
+                        Server Move
+                    </th>
+                </tr>
+            </thead>
+            <tbody>                
+            </tbody>
+        </table>
+    </div>
+    <div class="col-6">
+        <h2>Stats</h2>
+
+    </div>
+</div>
