@@ -1,7 +1,7 @@
 # rock-paper-scissors game
 ## dotnet core app
 
-## Install
+## Run
 
 ``` bash
 $ git clone git@github.com:rogithub/rock-paper-scissors.git
