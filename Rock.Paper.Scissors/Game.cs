@@ -5,7 +5,6 @@ namespace Rock.Paper.Scissors
 {
     public class Game : IRoundGame<Move, Round>
     {
-        public Dictionary<Move, int> WonsCount { get; private set; }
         public IList<Round> Rounds { get; private set; }
         private IMovePickerStrategy<Move, Round> Strategy { get; set; }
 

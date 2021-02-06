@@ -1,10 +1,9 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace Rock.Paper.Scissors
 {
-    public class HigherWinRateStrategy : IMovePickerStrategy<Move, Round>
+    public class CheckUserLastMovesStrategy : IMovePickerStrategy<Move, Round>
     {
         private Random _rnd = new Random();
 

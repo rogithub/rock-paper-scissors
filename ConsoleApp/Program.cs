@@ -6,7 +6,7 @@ namespace ConsoleApp
 {
     class Program
     {
-        static HigherWinRateStrategy _strategy = new HigherWinRateStrategy();
+        static IMovePickerStrategy<Move, Round> _strategy = new CheckUserLastMovesStrategy();
         static Game _game = new Game(_strategy);
 
         private static bool Validate(char strNumber, out int iMove)
