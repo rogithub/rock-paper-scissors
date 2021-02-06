@@ -10,4 +10,7 @@ $ dotnet run
 ```
 
 ## Playing
-![user wins](https://github.com/rogithub/rock-paper-scissors.git/blob/[branch]/image.jpg?raw=true)
+![user wins](https://raw.githubusercontent.com/rogithub/rock-paper-scissors/main/images/win.png)
+
+## Stats
+![user wins](https://raw.githubusercontent.com/rogithub/rock-paper-scissors/main/images/stats.png)
