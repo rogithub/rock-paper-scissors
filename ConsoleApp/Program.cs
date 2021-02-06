@@ -54,7 +54,7 @@ namespace ConsoleApp
                 Console.ReadKey();
             }
 
-            Func<int, int, double> percentage = (total, n) => (n * 100) / total;
+            Func<int, int, double> percentage = (total, n) => total == 0 ? 0 : (n * 100) / total;
             Console.WriteLine("Results \t Times \t Percent");
             Console.WriteLine("===============================");
             var arr = game.Rounds.ToArray();
