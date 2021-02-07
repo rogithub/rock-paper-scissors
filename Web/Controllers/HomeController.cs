@@ -13,13 +13,13 @@ namespace Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IRoundGame<Move, Round> _game;
+        private readonly IGame<Move, Round> _game;
 
         private readonly IStatsCalculator<Round> _calculator;
 
         public HomeController(
             ILogger<HomeController> logger,
-            IRoundGame<Move, Round> game,
+            IGame<Move, Round> game,
             IStatsCalculator<Round> calculator)
         {
             _logger = logger;

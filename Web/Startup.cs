@@ -26,7 +26,7 @@ namespace Web
         {
             services.AddTransient<IStatsCalculator<Round>, StatsCalculator>();
             services.AddTransient<IMovePickerStrategy<Move, Round>, CheckUserLastMovesStrategy>();
-            services.AddSingleton<IRoundGame<Move, Round>, Game>();
+            services.AddSingleton<IGame<Move, Round>, Game>();
             services.AddControllersWithViews();
         }
 

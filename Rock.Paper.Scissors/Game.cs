@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Rock.Paper.Scissors
 {
-    public class Game : IRoundGame<Move, Round>
+    public class Game : IGame<Move, Round>
     {
         public IList<Round> Rounds { get; private set; }
         private IMovePickerStrategy<Move, Round> Strategy { get; set; }
