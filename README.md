@@ -1,5 +1,5 @@
 # rock-paper-scissors game
-## dotnet core mvc - tested on Firefox
+## net5.0 debian buster - tested on Firefox
 
 ## Run
 
