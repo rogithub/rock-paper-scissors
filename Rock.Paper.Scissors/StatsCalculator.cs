@@ -16,7 +16,7 @@ namespace Rock.Paper.Scissors
             var arr = list.ToArray();
             var userWins = arr.Count(round => round.UserWins);
             var ties = arr.Count(round => round.IsTie);
-            var computerWins = arr.Count(round => !round.IsTie && !round.UserWins);
+            var computerWins = arr.Count(round => round.ComputerWins);
 
             return new Stats()
             {
