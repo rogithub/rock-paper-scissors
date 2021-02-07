@@ -20,7 +20,7 @@ namespace Rock.Paper.Scissors
 
         public Move GetNextMove(IList<Round> rounds)
         {
-            // first time return random
+            // first 2 times return random
             if (rounds.Count < 2) return (Move)_rnd.Next(0, 2);
 
             // if last two user choices are repeated (and won or tie)
