@@ -5,12 +5,13 @@
 
 ``` bash
 $ git clone git@github.com:rogithub/rock-paper-scissors.git
-$ cd rock-paper-scissors/ConsoleApp
+$ cd rock-paper-scissors/Web
 $ dotnet run
 ```
 
-## Playing
-![user wins](https://raw.githubusercontent.com/rogithub/rock-paper-scissors/main/images/win.png)
+## Open Browser 
+[https://localhost:5001](https://localhost:5001)
 
-## Stats
-![user wins](https://raw.githubusercontent.com/rogithub/rock-paper-scissors/main/images/stats.png)
+
+## Playing
+![playing](https://raw.githubusercontent.com/rogithub/rock-paper-scissors/main/images/game.png)

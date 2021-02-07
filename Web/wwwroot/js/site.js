@@ -30,9 +30,7 @@ const post = async (url, body) => {
     return await response.json();
 }
 
-const playRound = async (userMove) => {
-    let res = await post('/home/play', { UserMove: userMove });
-    
+const showData = (res) => {
     $("#tblResults tbody tr").remove();
 
     for (let i = 0; i < res.rows.length; i++) {
@@ -44,6 +42,16 @@ const playRound = async (userMove) => {
         tr.append(`<td>${moveToString(row.computerMove)}</td>`);
         $("#tblResults tbody").append(tr);
     }
+
+    $("#lblTotalRounds").text(`${res.stats.totalRounds}`);
+    $("#lblUserWins").text(`${res.stats.userWinsCount} (${res.stats.userWinsPercent} %)`);
+    $("#lblServerWins").text(`${res.stats.computerWinsCount} (${res.stats.computerWinsPercent} %)`);
+    $("#lblTies").text(`${res.stats.tiesCount} (${res.stats.tiesPercent} %)`);
+}
+
+const playRound = async (userMove) => {
+    let res = await post('/home/play', { UserMove: userMove });
+    showData(res);
 };
 
 $(async () => {
@@ -56,6 +64,6 @@ $(async () => {
 
     $("#btnReset").on("click", async () => {
         let res = await post('/home/reset', { });    
-        $("#tblResults tbody tr").remove();
+        showData(res);
     });
 });

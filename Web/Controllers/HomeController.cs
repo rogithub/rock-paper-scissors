@@ -15,11 +15,16 @@ namespace Web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IRoundGame<Move, Round> _game;
 
-        public HomeController(ILogger<HomeController> logger,
-        IRoundGame<Move, Round> game)
+        private readonly IStatsCalculator<Round> _calculator;
+
+        public HomeController(
+            ILogger<HomeController> logger,
+            IRoundGame<Move, Round> game,
+            IStatsCalculator<Round> calculator)
         {
             _logger = logger;
             _game = game;
+            _calculator = calculator;
         }
 
         public IActionResult Index()
@@ -30,11 +35,14 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult Play([FromBody]UserRound model)
         {
-            _logger.LogInformation($"User Move {model.UserMove}");
+            _logger.LogInformation($"User Move {(Move)model.UserMove}");
 
             _game.AddUserMove((Move)model.UserMove);
 
-            return Json(new { Rows = _game.Rounds });
+            return Json(new { 
+                Rows = _game.Rounds, 
+                Stats = _calculator.Calculate(_game.Rounds) 
+            });
         }
 
         [HttpPost]
@@ -42,7 +50,11 @@ namespace Web.Controllers
         {
             _logger.LogInformation($"Reset game");
             _game.Reset();
-            return Json(true);
+            
+            return Json(new { 
+                Rows = _game.Rounds, 
+                Stats = _calculator.Calculate(_game.Rounds) 
+            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
