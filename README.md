@@ -1,5 +1,5 @@
 # rock-paper-scissors game
-## dotnet core app
+## dotnet core mvc - tested on Firefox
 
 ## Run
 
