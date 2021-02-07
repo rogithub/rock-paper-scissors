@@ -3,6 +3,10 @@
 
 // Write your JavaScript code.
 
+const getRowClass = (row) => {
+    if (row.isTie) return "";    
+    return row.userWins ? "table-success" : "table-danger";
+}
 
 const moveToString = (n) => {
     switch (n) {
@@ -33,9 +37,9 @@ const post = async (url, body) => {
 const showData = (res) => {
     $("#tblResults tbody tr").remove();
 
-    for (let i = 0; i < res.rows.length; i++) {
+    for (let i = res.rows.length - 1; i > -1; i--) {
         let row = res.rows[i];
-        let tr = $("<tr/>");
+        let tr = $("<tr/>").addClass(getRowClass(row));
         tr.append(`<td>${i}</td>`);
         tr.append(`<td>${row.isTie? "No winner" : row.userWins ? "User": "Server"}</td>`);
         tr.append(`<td>${moveToString(row.userMove)}</td>`);
