@@ -1,6 +1,25 @@
 # rock-paper-scissors game
 ## net5.0 debian buster - tested on Firefox
 
+## Contents
+
+This repo contains 3 main folders
+
+- Rock.Paper.Scissors
+- Web
+- images
+
+## Rock.Paper.Scissors
+The most important part of this exercise is under project Rock.Paper.Scissors. Entry point is the class called Game.cs. This project contains all the game logic.
+
+## Web
+Web project adds a reference to Rock.Paper.Scissors. Web project entry file is HomeController.cs which gets via dependency injection an instance of Game class.
+
+Finally the JavaScript logic for handling the view is inside Web/wwwroot/site.js.
+
+## images
+Contains screenshot shown bellow in this README.md file.
+
 ## Run
 
 ``` bash
@@ -15,12 +34,3 @@ $ dotnet run
 
 ## Playing
 ![playing](https://raw.githubusercontent.com/rogithub/rock-paper-scissors/main/images/game.png)
-
-
-## Description
-
-The most important part of this exercise is under project Rock.Paper.Scissors. Entry point is the class called Game.cs. This project contains all the game logic.
-
-Web project adds a reference to Rock.Paper.Scissors. Web project entry file is HomeController.cs which gets via dependency injection an instance of Game class.
-
-Finally the JavaScript logic for handling the view is inside Web/wwwroot/site.js.
