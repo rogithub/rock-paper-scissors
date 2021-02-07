@@ -39,6 +39,7 @@ const showData = (res) => {
 
     for (let i = res.rows.length - 1; i > -1; i--) {
         let row = res.rows[i];
+        
         let tr = $("<tr/>").addClass(getRowClass(row));
         tr.append(`<td>${i}</td>`);
         tr.append(`<td>${row.isTie? "No winner" : row.userWins ? "User": "Server"}</td>`);
