@@ -6,7 +6,7 @@ namespace Rock.Paper.Scissors
 {
     public class StatsCalculator: IStatsCalculator<Round>
     {
-        public double Percentage(int total, int n) 
+        private double Percentage(int total, int n) 
         {
             return total == 0 ? 0 : (n * 100) / total;
         }        
