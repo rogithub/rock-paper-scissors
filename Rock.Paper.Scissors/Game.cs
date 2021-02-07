@@ -14,13 +14,12 @@ namespace Rock.Paper.Scissors
             this.Reset();
         }
 
-        public Round AddUserMove(Move move)
+        public Round AddUserMove(Move user)
         {
-            Round r = new Round();
-            r.UserMove = move;
-            r.ComputerMove = Strategy.GetNextMove(this.Rounds);
-            this.Rounds.Add(r);
-            return r;
+            var computer = Strategy.GetNextMove(this.Rounds);
+            var round = new Round(user, computer);
+            this.Rounds.Add(round);
+            return round;
         }
 
         public void Reset()

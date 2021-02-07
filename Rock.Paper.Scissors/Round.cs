@@ -8,6 +8,13 @@ namespace Rock.Paper.Scissors
         {
             this.TimeStamp = DateTime.Now;
         }
+
+        public Round(Move user, Move computer) : this()
+        {
+            this.UserMove = user;
+            this.ComputerMove = computer;
+        }
+
         public Move UserMove { get; set; }
         public Move ComputerMove { get; set; }
         public DateTime TimeStamp { get; set; }
