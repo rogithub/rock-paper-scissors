@@ -49,6 +49,7 @@ namespace Web.Controllers
         public IActionResult Reset()
         {
             _logger.LogInformation($"Reset game");
+            
             _game.Reset();
             
             return Json(new { 
