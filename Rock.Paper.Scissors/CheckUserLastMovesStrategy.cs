@@ -24,7 +24,7 @@ namespace Rock.Paper.Scissors
             if (rounds.Count < 2) return (Move)_rnd.Next(0, 2);
 
             // if last two user choices are repeated (and won or tie)
-            // increase chance to win by giving more points
+            // increase chance for computer to win by giving more points
             // to beating move
             var prev = rounds[rounds.Count - 2];
             var r = rounds[rounds.Count - 1];
