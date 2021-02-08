@@ -13,20 +13,19 @@ namespace Rock.Paper.Scissors
 
         public Stats Calculate (IList<Round> list)
         {
-            var arr = list.ToArray();
-            var userWins = arr.Count(round => round.UserWins);
-            var ties = arr.Count(round => round.IsTie);
-            var computerWins = arr.Count(round => round.ComputerWins);
+            var userWins = list.Count(round => round.UserWins);
+            var ties = list.Count(round => round.IsTie);
+            var computerWins = list.Count(round => round.ComputerWins);
 
             return new Stats()
             {
-                TotalRounds = arr.Length,
+                TotalRounds = list.Count,
                 ComputerWinsCount = computerWins,
-                ComputerWinsPercent = Percentage(arr.Length, computerWins),
+                ComputerWinsPercent = Percentage(list.Count, computerWins),
                 UserWinsCount = userWins,
-                UserWinsPercent = Percentage(arr.Length, userWins),
+                UserWinsPercent = Percentage(list.Count, userWins),
                 TiesCount = ties,
-                TiesPercent = Percentage(arr.Length, ties)               
+                TiesPercent = Percentage(list.Count, ties)               
             };
         }
     }
